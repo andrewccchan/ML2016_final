@@ -1,0 +1,5 @@
+## ML2016 Final
+
+-   source codes are put under ./src
+-   pickle, stored models and any other temporary files are under ./obj 
+-   data are put under ./data
