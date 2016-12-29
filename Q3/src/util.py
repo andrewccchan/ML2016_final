@@ -3,6 +3,28 @@ from document import Document
 import csv
 import numpy as np
 
+def loadPredictions():
+    pre = dict()
+    with open("../submit.csv", "r") as preFile:
+        csvReader = csv.reader(preFile, quotechar='"', delimiter=',',
+                        quoting=csv.QUOTE_ALL, skipinitialspace=True)
+        next(csvReader, None) # skip header
+        for l in csvReader:
+            pre[int(l[0])] = l[1].split(" ")
+
+    return pre
+
+def loadTestDataWOFeatures():
+    with open("../data/test.csv", "r") as inFile:
+        print "Load test data"
+        csvReader = csv.reader(inFile, quotechar='"', delimiter=',',
+                        quoting=csv.QUOTE_ALL, skipinitialspace=True)
+        next(csvReader, None) # skip header
+        docs = [Document(l, "test") for l in csvReader]
+
+    return docs
+
+    return docs
 def loadTrainData(inputCorps):
     X = []
     y = []

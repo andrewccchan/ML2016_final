@@ -3,7 +3,7 @@ import util
 import csv
 from document import Document
 
-def predict(model):
+def predict(model, meanX, stdX):
 
     # Load test data. Modified from loadTrainData
     header = ["\"id\"", "\"tags\""]
@@ -20,7 +20,7 @@ def predict(model):
             invVoc = {v: k for k, v in docs[d].vocab.iteritems()}
             docs[d].addTFIDF(totalCount, len(docs), True)
             fea = docs[d].getFeatures()
-            fea, meanX, stdX = util.featureNorm(fea)
+            fea, meanX, stdX = util.featureNorm(fea, meanX, stdX)
             # docs[d].debug()
             # labels = model.predict_classes(fea, batch_size=1, verbose=0)
             # print labels

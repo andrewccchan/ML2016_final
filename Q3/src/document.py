@@ -21,7 +21,7 @@ class Document:
 
     def genFeatures(self):
         # Combine title, contents and tag
-        fDoc = self.__getFullDoc()
+        fDoc = self.getFullDoc()
 
         # Collect tf
         tf = dict()
@@ -92,5 +92,5 @@ class Document:
         else:
             return common
     # Combine title, contents
-    def __getFullDoc(self):
+    def getFullDoc(self):
         return self.title + self.cont
